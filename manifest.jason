@@ -1,0 +1,15 @@
+{
+  "name": "اپلیکیشن رزومه‌ساز آنلاین",
+  "short_name": "رزومه‌ساز",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#007bff",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2906/2906244.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
