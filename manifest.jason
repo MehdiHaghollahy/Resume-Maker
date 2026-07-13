@@ -1,18 +1,14 @@
-{
-  "name": "اپلیکیشن رزومه‌ساز آنلاین",
-  "short_name": "رزومه‌ساز",
-  "start_url": "index.html",
-  "scope": "./",
-  "display": "standalone",
+
+ {
   "background_color": "#ffffff",
-  "theme_color": "#007bff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "mehdihaghollahy.github",
   "orientation": "any",
-  "dir": "rtl",
-  "icons": [
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/2906/2906244.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  "scope": "/",
+  "short_name": "mehdihaghollahy.github",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "id": "com.mehdihaghollahy.resumemaker",
+  "description": "یک اپلیکیشن ساده و سریع برای ساخت رزومه شخصی"
 }
