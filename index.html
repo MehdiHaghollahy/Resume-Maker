@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه‌ساز سریع</title>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        body { font-family: Tahoma, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #007bff; }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px 20px; margin-top: 20px; cursor: pointer; border-radius: 4px; width: 100%; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        .preview-box { display: none; margin-top: 30px; padding: 20px; border: 2px dashed #007bff; background: #fafafa; border-radius: 6px; }
+        .resume-header { border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 15px; }
+        @media print {
+            body * { visibility: hidden; }
+            .preview-box, .preview-box * { visibility: visible; }
+            .preview-box { display: block !important; position: absolute; left: 0; top: 0; width: 100%; border: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>رزومه‌ساز ساده و سریع</h1>
+    
+    <div id="form-section">
+        <label>نام و نام خانوادگی:</label>
+        <input type="text" id="fullName" placeholder="مثلاً: علی محمدی">
+
+        <label>عنوان شغلی / تخصص:</label>
+        <input type="text" id="jobTitle" placeholder="مثلاً: توسعه‌دهنده فرانت‌اند">
+
+        <label>درباره من:</label>
+        <textarea id="aboutMe" rows="4" placeholder="خلاصه‌ای از تخصص و روحیات خود بنویسید..."></textarea>
+
+        <label>سوابق کاری (هر کدام در یک خط):</label>
+        <textarea id="experience" rows="4" placeholder="شرکت الف - برنامه نویس (۱۴۰۲ تا کنون)"></textarea>
+
+        <button onclick="generateResume()">ساخت رزومه و دانلود PDF</button>
+    </div>
+
+    <div id="preview" class="preview-box">
+        <div class="resume-header">
+            <h2 id="resName"></h2>
+            <h4 id="resTitle" style="color: #666; margin: 5px 0;"></h4>
+        </div>
+        <h3>درباره من</h3>
+        <p id="resAbout"></p>
+        <h3>سوابق کاری</h3>
+        <p id="resExp" style="white-space: pre-line;"></p>
+        
+        <button onclick="window.print()" style="background-color: #28a745;">پرینت / ذخیره به صورت PDF</button>
+    </div>
+</div>
+
+<script>
+    function generateResume() {
+        // گرفتن مقادیر از فرم
+        const name = document.getElementById('fullName').value;
+        const title = document.getElementById('jobTitle').value;
+        const about = document.getElementById('aboutMe').value;
+        const exp = document.getElementById('experience').value;
+
+        // قرار دادن مقادیر در بخش پیش‌نمایش
+        document.getElementById('resName').innerText = name;
+        document.getElementById('resTitle').innerText = title;
+        document.getElementById('resAbout').innerText = about;
+        document.getElementById('resExp').innerText = exp;
+
+        // نمایش بخش رزومه
+        document.getElementById('preview').style.display = 'block';
+    }
+
+    // ثبت سرویس‌ورکر برای PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+    }
+</script>
+</body>
+</html>
